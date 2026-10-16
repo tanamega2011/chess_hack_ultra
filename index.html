@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>โต๊ะวิเคราะห์</title>
+    <meta
+      name="description"
+      content="เดินหมากรุกทั้งสองฝ่ายเอง พร้อมคำแนะนำตาที่ดีที่สุดจาก Stockfish"
+    />
+    <meta name="theme-color" content="#14110e" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="top">
+        <h1>โต๊ะวิเคราะห์</h1>
+        <p class="lead">ลูกศรบนกระดานคือตาที่ดีที่สุด เปิดเดินอัตโนมัติได้ทั้งสองฝ่าย</p>
+      </header>
+      <main class="layout">
+        <section class="board-col">
+          <div class="status-row">
+            <p id="status" class="status">ตาของฝ่ายขาว</p>
+            <p id="view-label" class="muted">มุมมองฝ่ายขาว</p>
+          </div>
+          <p id="auto-note" class="muted auto-note" hidden></p>
+          <div class="board-row">
+            <div class="board-wrap">
+              <div id="board"></div>
+              <div id="promo" class="promo" hidden>
+                <div class="promo-card" role="dialog" aria-modal="true" aria-labelledby="promo-title">
+                  <h2 id="promo-title">เลื่อนขั้นเบี้ย</h2>
+                  <div id="promo-options" class="promo-options"></div>
+                  <button id="promo-cancel" type="button" class="btn btn-ghost">ยกเลิก</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <aside class="side">
+          <section class="times" id="think-times">
+            <button type="button" data-think="2000" class="btn btn-brass" aria-pressed="true">2 วินาที</button>
+            <button type="button" data-think="1000" class="btn btn-ghost" aria-pressed="false">1 วินาที</button>
+            <button type="button" data-think="1" class="btn btn-ghost" aria-pressed="false">ทันที</button>
+          </section>
+          <section class="controls">
+            <button id="auto-white" type="button" class="btn btn-ghost" aria-pressed="false">เดินฝ่ายขาวอัตโนมัติ</button>
+            <button id="auto-black" type="button" class="btn btn-ghost" aria-pressed="false">เดินฝ่ายดำอัตโนมัติ</button>
+            <button id="new-game" type="button" class="btn btn-brass">เกมใหม่</button>
+            <button id="undo" type="button" class="btn btn-ghost" disabled>ย้อนตา</button>
+            <button id="side-white" type="button" class="btn btn-brass" aria-pressed="true">ขาวด้านล่าง</button>
+            <button id="side-black" type="button" class="btn btn-ghost" aria-pressed="false">ดำด้านล่าง</button>
+          </section>
+          <p class="fine">เปิดสองปุ่มพร้อมกันได้ เลือกให้คิด 2 วินาที 1 วินาที หรือเดินทันที</p>
+          <section class="card">
+            <h2 class="section-title">ประวัติการเดิน</h2>
+            <div id="history" class="history">
+              <p class="muted">ยังไม่มีการเดิน</p>
+            </div>
+          </section>
+          <p class="fine">
+            กฎการเดิน รุก รุกจน อับ เข้าป้อม จับกินผ่าน และเลื่อนขั้นเบี้ย ตรวจด้วย chess.js
+            คำแนะนำเป็นลูกศรบนกระดานจาก Stockfish 19 เปิดเดินอัตโนมัติแล้วจะคิดตามเวลาที่เลือกแล้วเดินให้
+            <a href="STOCKFISH-COPYING.txt">สัญญาอนุญาต GPLv3</a>. ตัวหมาก Cburnett (CC BY-SA)
+          </p>
+        </aside>
+      </main>
+    </div>
+    <div id="ghost" hidden></div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
